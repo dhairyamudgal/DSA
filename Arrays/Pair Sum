@@ -1,0 +1,31 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;  // Add this line to use the standard namespace
+
+vector<vector<int>> pairSum(vector<int> &arr, int s) {
+   vector<vector<int>> ans;  // Update the type of 'ans' to a 2D vector
+   sort(arr.begin(), arr.end());
+
+   int start = 0;
+   int end = 1;
+
+   while (start < arr.size() && end < arr.size()) {  // Add parentheses after 'size'
+
+      int sum = arr[start] + arr[end];
+      if (sum == s) {
+         // Create a vector to store the pair of values
+         vector<int> pairValues = {arr[start], arr[end]};
+         ans.push_back(pairValues);  // Push the pair into the 'ans' vector
+      }
+      end++;
+
+      // Update 'start' and 'end' values when 'end' reaches the end of the array
+      if (end == arr.size()) {
+         start++;
+         end = start + 1;
+      }
+   }
+
+   return ans;
+}
