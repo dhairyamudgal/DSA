@@ -1,0 +1,29 @@
+#include <iostream>
+#include<vector>
+using namespace std;
+
+int main(){
+vector<int> v;
+
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+v.push_back(5);
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+
+v.push_back(2);
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+v.push_back(7);
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+cout<<"Size of vector"<<v.size()<<endl;
+
+cout<<v.at(2); //random access
+v.pop_back();
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+cout<<"Size of vector"<<v.size()<<endl;
+
+v.pop_back();
+cout<<"Capacity of vector"<<v.capacity()<<endl;
+cout<<"Size of vector"<<v.size()<<endl;
+cout<<v.front();
+cout<<v.back();
+
+};
