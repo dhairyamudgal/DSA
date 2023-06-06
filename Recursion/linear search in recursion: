@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+
+bool linearSearch (int *arr, int size , int k) {
+
+    //base case
+    if(size == 0) {
+        return 0;
+    }
+    if(arr[0]==k){
+        return true;
+    }
+   
+
+    bool remainingPart = linearSearch(arr+1, size-1, k);
+    return remainingPart;
+}
+
+int main() {
+
+    int arr[5] = {2,400,10,19,29};
+    int size = 5;
+    int k;
+    cin>>k;
+
+
+    cout<< linearSearch(arr, size, k);
+
+    return 0;
+}

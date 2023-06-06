@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+int rev(string s, int size){
+
+    if(size<0){
+        return 0;
+    }
+
+    cout<<s[size];
+
+    return rev(s,size-1);
+}
+
+int main() {
+
+    string s = "dhairya";
+    
+    int size = s.size();
+
+
+    cout<<rev(s,size);
+
+    return 0;
+}
+
