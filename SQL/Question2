@@ -1,0 +1,8 @@
+SELECT g.genre AS genre, AVG(i.Rating + i.MetaCritic/10.0) AS "weighted rating"
+FROM IMDB i
+JOIN genre g ON i.Movie_id = g.Movie_id
+JOIN earning e ON i.Movie_id = e.Movie_id
+WHERE i.Title LIKE '%(2014)%' AND i.Rating IS NOT NULL AND i.MetaCritic IS NOT NULL
+GROUP BY g.genre
+HAVING g.genre IS NOT NULL AND AVG(i.Rating + i.MetaCritic/10.0) IS NOT NULL
+ORDER BY g.genre;
