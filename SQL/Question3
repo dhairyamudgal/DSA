@@ -1,0 +1,8 @@
+SELECT g.genre, MAX(e.Domestic + e.Worldwide - i.Budget) AS net_profit
+FROM genre g
+JOIN earning e ON g.Movie_id = e.Movie_id
+JOIN IMDB i ON g.Movie_id = i.Movie_id
+WHERE g.genre IS NOT NULL AND g.genre <> '' AND i.Title LIKE '%(2012)'
+GROUP BY g.genre
+HAVING MAX(e.Domestic + e.Worldwide - i.Budget) IS NOT NULL
+ORDER BY g.genre ASC;
