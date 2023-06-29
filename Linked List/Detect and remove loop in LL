@@ -1,0 +1,38 @@
+
+Node* removeLoop(Node* head) {
+    Node* slow = head;
+    Node* fast = head;
+    Node* pointOfIntersection = NULL;
+
+    // Detect the loop using Floyd's cycle detection algorithm
+    while (slow != NULL && fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast) {
+            pointOfIntersection = slow;
+            break;
+        }
+    }
+
+    // If no loop is detected, return the original head
+    if (pointOfIntersection == NULL) {
+        return head;
+    }
+
+    // Find the start of the loop
+    Node* startOfLoop = head;
+    while (startOfLoop != pointOfIntersection) {
+        startOfLoop = startOfLoop->next;
+        pointOfIntersection = pointOfIntersection->next;
+    }
+
+    // Remove the loop by setting the next pointer of the last node in the loop to NULL
+    Node* temp = startOfLoop;
+    while (temp->next != startOfLoop) {
+        temp = temp->next;
+    }
+    temp->next = NULL;
+
+    return head;
+}
