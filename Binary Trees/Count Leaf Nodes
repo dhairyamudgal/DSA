@@ -1,0 +1,29 @@
+ void postorderTraversal(BinaryTreeNode<int> *root, int &count){
+    //base
+
+    if(root == NULL){
+        return ;
+    }
+
+
+    postorderTraversal(root -> left, count);
+    
+    postorderTraversal(root -> right, count);
+    
+    if(root-> left == NULL && root -> right == NULL){
+        count++;
+    }
+    
+}
+
+int noOfLeafNodes(BinaryTreeNode<int> *root){
+    
+
+    //base
+    int count = 0;
+    postorderTraversal(root , count);
+
+    return count;
+    
+
+}
